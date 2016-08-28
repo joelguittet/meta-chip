@@ -107,6 +107,14 @@ Then start the target in FEL mode (put a jumper between the FEL pin and GND and 
 At the end of the flashing procedure, the target is powered off. Disconnect the power supply and remove the FEL jumper. Restart the target. A console is available on the UART pins of the board and another one on the USB OTG cable (you should see a new tty device when connecting C.H.I.P. to your computer). Speed is 115200 for both consoles. Login is 'root' with no password.
 
 
+Contributing
+--
+
+All contributions are welcome :-)
+
+Use Github Issues to report anomalies or to propose enhancements (labels are available to clearly identify what you are writing) and Pull Requests to submit modifications.
+
+
 References
 --
 
