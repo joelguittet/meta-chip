@@ -94,7 +94,7 @@ Build minimal image and u-boot:
 
 **_6- Flash target_**
 
-Copy files in the images directory and flash the target (replace chip-ima-minimal-chip.ubi by the wanted rootfs if you have build another image):
+Copy files in the images directory and flash the target (replace chip-image-minimal-chip.ubi by the wanted rootfs if you have build another image):
 
 	cp ~/yocto/build/tmp/deploy/images/chip/chip-image-minimal-chip.ubi ~/yocto/images/rootfs.ubi
 	cp ~/yocto/build/tmp/deploy/images/chip/sunxi-spl.bin ~/yocto/images
