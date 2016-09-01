@@ -33,9 +33,9 @@ The following tutorial is useful to start building your own Yocto project and lo
 
 **_1- Install System Dependencies (once)_**
 
-	sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm lzop
-	sudo apt-get install u-boot-tools android-tools-fastboot git build-essential curl android-tools-fsutils libusb-1.0-0-dev python-pip
-	pip install --upgrade pip && pip install pyserial
+	sudo apt-get update && sudo apt-get upgrade
+	sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm lzop u-boot-tools git build-essential curl libusb-1.0-0-dev python-pip
+	sudo pip install --upgrade pip && sudo pip install pyserial
 
 **_2- Get sources and flashing tools (once)_**
 
@@ -60,7 +60,7 @@ Get and build tools:
 Setup environnement:
 
 	cd ~/yocto
-	source oe-init-build-env
+	source poky/oe-init-build-env
 
 Add layers to the configuration file ~/yocto/build/conf/bblayers.conf:
 
@@ -83,7 +83,7 @@ Set machine in the configuration file ~/yocto/build/conf/local.conf:
 Restore environnement:
 
         cd ~/yocto
-        source oe-init-build-env
+        source poky/oe-init-build-env
 
 **_5- Build_**
 
