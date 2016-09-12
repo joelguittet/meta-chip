@@ -4,5 +4,5 @@ LICENSE = "MIT"
 require recipes-core/images/chip-image-minimal.bb
 
 IMAGE_INSTALL += " \
-  packagegroup-wifi \
+  chip-packagegroup-wifi \
 "
