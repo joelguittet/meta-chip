@@ -1,0 +1,42 @@
+--- a/Makefile	2016-09-12 22:14:54.898417796 +0200
++++ b/Makefile	2016-09-13 00:43:53.874041634 +0200
+@@ -40,10 +40,6 @@
+ 
+ ###########################################################
+ # check for required env vars
+-ifeq ($(PI_TOOLS),)
+-  $(error "PI_TOOLS is not defined. Please set PI_TOOLS to point to the location of the raspberry pi GNU toolchain")
+-endif
+-
+ ifeq ($(JAVA_HOME),)
+   $(error "JAVA_HOME is not defined. Please set JAVA_HOME to point to the location of the JDK8 installation")
+ endif
+@@ -165,10 +161,9 @@
+ 
+ #######################################################################################################
+ # tool and flag setup for arm (rasp pi) build
+-TARGET_TOOLCHAIN := $(PI_TOOLS)
+-TARGET_CC := $(TARGET_TOOLCHAIN)/bin/gcc
+-TARGET_CXX := $(TARGET_TOOLCHAIN)/bin/g++
+-TARGET_LD := $(TARGET_TOOLCHAIN)/bin/gcc
++TARGET_CC := $(CC)
++TARGET_CXX := $(CXX)
++TARGET_LD := $(CC)
+ JAVAC := $(JAVA_HOME)/bin/javac
+ JAR := $(JAVA_HOME)/bin/jar
+ MKDIR := mkdir -p
+@@ -201,12 +196,12 @@
+ osgi_build_i586:
+ 	rm -rf $(OSGI_BUILD_DIR)/*
+ 	@echo "Build osgi bundle for i586..."
+-	make bundle TARGET_CPU_LEGACY_LIB=i586 PI_TOOLS=/usr USER_C_FLAGS="-march=i586 -m32" USER_CXX_FLAGS="-march=i586 -m32" USER_LD_FLAGS="-march=i586 -m32" osgi
++	make bundle TARGET_CPU_LEGACY_LIB=i586 USER_C_FLAGS="-march=i586 -m32" USER_CXX_FLAGS="-march=i586 -m32" USER_LD_FLAGS="-march=i586 -m32" osgi
+ 
+ osgi_build_arm:
+ 	rm -rf $(OSGI_BUILD_DIR)/*
+ 	@echo "Build osgi bundle for arm..."
+-	make bundle PI_TOOLS=/opt/pi-tools osgi
++	make bundle osgi
+ 
+ osgi_all: osgi_all_clean osgi_build_i586 osgi_build_arm
+ 	@echo "osgi bundles built for all architectures..."
