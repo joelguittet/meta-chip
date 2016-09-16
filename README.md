@@ -11,6 +11,7 @@ This layer depends on the additional layers:
 * meta-openembedded/meta-oe
 * meta-openembedded/meta-python
 * meta-openembedded/meta-networking
+* meta-java (from http://git.yoctoproject.org/cgit/cgit.cgi/meta-java - only if building openjdk)
 
 
 Images
@@ -24,6 +25,18 @@ The following images are available:
 The wanted image is chosen during the build with bitbake command.
 
 New images created in other layers should at least require chip-image-minimal. 
+
+
+Package groups
+--
+
+The following package groups are available:
+* chip-packagegroup-wifi: to build images with WiFi tools to connect to an external network.
+* chip-packagegroup-wifi-hotspot: to build images with WiFi tools to create an hotspot.
+* chip-packagegroup-java: to build images with OpenJdk to execute Java applications.
+* chip-packagegroup-java-dio: to build images with OpenJdk and OpenJdk-DIO project used to access hardware from Java applications.
+
+Package groups are included in wanted images.
 
 
 Using
