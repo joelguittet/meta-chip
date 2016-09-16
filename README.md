@@ -13,6 +13,8 @@ This layer depends on the additional layers:
 * meta-openembedded/meta-networking
 * meta-java (from http://git.yoctoproject.org/cgit/cgit.cgi/meta-java - only if building openjdk)
 
+Examples to use this layer are available in my Github at https://github.com/myfreescalewebpage/meta-chip-examples.
+
 
 Images
 --
