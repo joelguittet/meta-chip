@@ -21,8 +21,6 @@ Images
 
 The following images are available:
 * chip-image-minimal: the minimal image which is used to get the hardware running. It has USB Gagdet with console over USB OTG port feature. Images all require this image.
-* chip-image-wifi: image with WiFi tools to connect to an external network.
-* chip-image-wifi-hotspot: image with WiFi tools to create an hotspot.
 
 The wanted image is chosen during the build with bitbake command.
 
