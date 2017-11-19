@@ -8,20 +8,21 @@ COMPATIBLE_MACHINE = "chip"
 inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
-LINUX_VERSION ?= "4.2-rc1"
-PV = "${LINUX_VERSION}+git${SRCPV}"
+SRCREV ?= "bce5de1cdc3667a2bc454219a0856b4f415b33f5"
 
-SRCREV ?= "fd2ad2582c7fb4a5fedff5ac19ca37d138df3963"
 SRC_URI += " \
-    git://github.com/NextThingCo/CHIP-linux.git;protocol=git;branch=chip/stable \
+    git://github.com/NextThingCo/CHIP-linux.git;protocol=git;branch=nextthing/4.4/chip \
     file://defconfig \
 "
+
+LINUX_VERSION ?= "4.4"
+PV = "${LINUX_VERSION}+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
 do_install_append() {
-    #workaround for bug in fido, ocurrs when building out-of-tree modules
-    #ref: https://lists.yoctoproject.org/pipermail/yocto/2015-May/024738.html
+    # Workaround for bug in fido, ocurrs when building out-of-tree modules
+    # Ref: https://lists.yoctoproject.org/pipermail/yocto/2015-May/024738.html
     cp -f ${KBUILD_OUTPUT}/Module.symvers ${STAGING_KERNEL_BUILDDIR}
 }
 
