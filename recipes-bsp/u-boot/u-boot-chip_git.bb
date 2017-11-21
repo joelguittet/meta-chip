@@ -1,4 +1,4 @@
-DESCRIPTION="U-Boot port for NextThing Co C.H.I.P"
+DESCRIPTION="U-Boot port for C.H.I.P boards"
 
 require recipes-bsp/u-boot/u-boot.inc
 
@@ -18,7 +18,7 @@ LIC_FILES_CHKSUM = " \
     file://Licenses/lgpl-2.1.txt;md5=4fbd65380cdd255951079008b364516c \
 "
 
-COMPATIBLE_MACHINE = "chip"
+COMPATIBLE_MACHINE = "chip|chip-pro"
 
 DEFAULT_PREFERENCE_chip="1"
 
