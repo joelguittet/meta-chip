@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=dd439af477363980bb4b16ba062876cc"
 DEPENDS_${PN} = "openjdk-7-jre"
 RDEPENDS_${PN} = "openjdk-7-jre"
 
+do_compile[depends] = "openjdk-7-jre:do_populate_sysroot"
+
 PR = "r0"
 
 SRC_URI = " \
