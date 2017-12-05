@@ -3,17 +3,34 @@ meta-chip
 
 NextThingCo C.H.I.P. Yocto meta layer.
 
-This layer contains kernel, u-boot and image recipes to flash the NextThingCo C.H.I.P. board.
+This layer contains kernel, u-boot and image recipes to flash the NextThingCo C.H.I.P. boards.
 
-This layer depends on the additional layers:
+This layer depends on the additional mandatory layers:
 * meta-yocto
 * meta-yocto-bsp
 * meta-openembedded/meta-oe
 * meta-openembedded/meta-python
 * meta-openembedded/meta-networking
+
+Optionally, the following layers will be required:
+
 * meta-java (from http://git.yoctoproject.org/cgit/cgit.cgi/meta-java - only if building openjdk)
 
 Examples to use this layer are available in my Github at https://github.com/myfreescalewebpage/meta-chip-examples.
+
+
+Philosophy of this meta layer
+--
+
+The main positions of this meta layer are the following:
+* A single meta layer for all NextThingCo C.H.I.P. boards. Today, C.H.I.P. and C.H.I.P. PRO are both supported.
+* The same baseline for all boards: same u-boot version (2016.01), the same kernel version (4.4), the same default kernel configuration. Only the specificities of the hardware differs (device tree and WiFi driver module).
+* A step by step tutorial to help you building and flashing your first C.H.I.P. board (see chapter Using just below).
+* Some simple tools to flash the boards (a single script to launch).
+
+The whishes of the meta layer is to provide the most important abstraction to the hardware. Following the design rules described above, many applications can be executed on C.H.I.P. or C.H.I.P. PRO without to worry about the hardware version used in you final design.
+
+Moreover, the meta layer is improved thinking to the impacts on your own meta layer and trying to reducing them at the maximum.
 
 
 Images
@@ -42,7 +59,7 @@ Package groups are included in wanted images.
 Using
 --
 
-The following tutorial is useful to start building your own Yocto project and loading C.H.I.P.
+The following tutorial is useful to start building your own Yocto project and loading C.H.I.P. or C.H.I.P. PRO board.
 
 **_1- Install System Dependencies (once)_**
 
@@ -58,14 +75,30 @@ Clone sources:
 	git clone --branch fido git://git.openembedded.org/meta-openembedded ~/yocto/meta-openembedded
 	git clone https://github.com/myfreescalewebpage/meta-chip.git ~/yocto/meta-chip
 
-Get and build tools:
+Get and build sunxi tools:
 
-	git clone http://github.com/NextThingCo/sunxi-tools ~/yocto/sunxi-tools
+	git clone http://github.com/linux-sunxi/sunxi-tools ~/yocto/sunxi-tools
 	cd ~/yocto/sunxi-tools
 	make
-	rm /usr/local/bin/fel
-	sudo ln -s $PWD/fel /usr/local/bin/fel
-	git clone --branch yocto https://github.com/myfreescalewebpage/CHIP-tools ~/yocto/chip-tools
+	make misc
+	make install
+	make install-misc
+
+Get and build C.H.I.P. tools:
+
+	git clone https://github.com/myfreescalewebpage/chip-tools ~/yocto/chip-tools
+
+Update udev rules:
+
+	echo -e 'SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="efe8", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="1010", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip-fastboot"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="1010", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip-fastboot"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="plugdev", MODE="0660" SYMLINK+="usb-serial-adapter"
+	' | sudo tee /etc/udev/rules.d/99-allwinner.rules
+	sudo udevadm control --reload-rules
+
+Create images directory:
+
 	mkdir -p ~/yocto/images
 
 **_3- Configure build (once)_**
@@ -91,6 +124,12 @@ Set machine in the configuration file ~/yocto/build/conf/local.conf:
 
 	MACHINE ??= "chip"
 
+Or:
+
+	MACHINE ??= "chip-pro"
+
+Depending of the expected target.
+
 **_4- Restore environnement (when restarting the development machine)_**
 
 Restore environnement:
@@ -100,12 +139,14 @@ Restore environnement:
 
 **_5- Build_**
 
-Build minimal image and u-boot:
+Build minimal image:
 
 	cd ~/yocto/build
 	bitbake chip-image-minimal
 
 **_6- Flash target_**
+
+#### C.H.I.P.
 
 Copy files in the images directory and flash the target (replace chip-image-minimal-chip.ubi by the wanted rootfs if you have build another image):
 
@@ -113,11 +154,41 @@ Copy files in the images directory and flash the target (replace chip-image-mini
 	cp ~/yocto/build/tmp/deploy/images/chip/sunxi-spl.bin ~/yocto/images
 	cp ~/yocto/build/tmp/deploy/images/chip/sunxi-spl-with-ecc.bin ~/yocto/images
 	cp ~/yocto/build/tmp/deploy/images/chip/u-boot-dtb.bin ~/yocto/images
-	cd ~/yocto/chip-tools/
-	sudo BUILDROOT_OUTPUT_DIR=~/yocto ./chip-fel-flash.sh
 
-Then start the target in FEL mode (put a jumper between the FEL pin and GND and then power ON). Logs are displayed to check the progression and the verification of the flashing procedure.
-At the end of the flashing procedure, the target is powered off. Disconnect the power supply and remove the FEL jumper. Restart the target. A console is available on the UART pins of the board and another one on the USB OTG cable (you should see a new tty device when connecting C.H.I.P. to your computer). Speed is 115200 for both consoles. Login is 'root' with no password.
+Then start the target in FEL mode (put a jumper between the FEL pin and GND and then power ON) as shown on the following image.
+
+![FEL](http://flash.getchip.com/static/img/chipConnect.2c4d9dc.png)
+
+Flash the target:
+
+	cd ~/yocto/chip-tools/
+	sudo ./chip-flash-chip.sh ~/yocto/images
+
+Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.
+
+At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board Speed is 115200. Login is 'root' with no password.
+
+#### C.H.I.P. PRO
+
+Copy files in the images directory and flash the target (replace chip-image-minimal-chip-pro.ubi by the wanted rootfs if you have build another image):
+
+	cp ~/yocto/build/tmp/deploy/images/chip-pro/chip-image-minimal-chip-pro.ubi ~/yocto/images/rootfs.ubi
+	cp ~/yocto/build/tmp/deploy/images/chip-pro/sunxi-spl.bin ~/yocto/images
+	cp ~/yocto/build/tmp/deploy/images/chip-pro/sunxi-spl-with-ecc.bin ~/yocto/images
+	cp ~/yocto/build/tmp/deploy/images/chip-pro/u-boot-dtb.bin ~/yocto/images
+
+Then start the target in FEL mode (press FEL button while power ON) as shown on the following image.
+
+![FEL](http://flash.getchip.com/static/img/pressPlugWhite.682b824.gif)
+
+Flash the target:
+
+	cd ~/yocto/chip-tools/
+	sudo ./chip-flash-chip-pro.sh ~/yocto/images
+
+Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.
+
+At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board Speed is 115200. Login is 'root' with no password.
 
 
 Contributing
