@@ -24,20 +24,20 @@ Philosophy of this meta layer
 
 The main positions of this meta layer are the following:
 * A single meta layer for all NextThingCo C.H.I.P. boards. Today, C.H.I.P. and C.H.I.P. PRO are both supported.
-* The same baseline for all boards: same u-boot version (2016.01), the same kernel version (4.4), the same default kernel configuration. Only the specificities of the hardware differs (device tree and WiFi driver module).
+* The same baseline for all boards: same u-boot version (2016.01), the same kernel version (4.4), the same default kernel configuration. Only the specificities of the hardware differ (device tree and WiFi driver module).
 * A step by step tutorial to help you building and flashing your first C.H.I.P. board (see chapter Using just below).
 * Some simple tools to flash the boards (a single script to launch).
 
 The whishes of the meta layer is to provide the most important abstraction to the hardware. Following the design rules described above, many applications can be executed on C.H.I.P. or C.H.I.P. PRO without to worry about the hardware version used in you final design.
 
-Moreover, the meta layer is improved thinking to the impacts on your own meta layer and trying to reducing them at the maximum.
+Moreover, the meta layer is improved thinking to the impacts on your own meta layer and trying to reduce them to the minimum.
 
 
 Images
 --
 
 The following images are available:
-* chip-image-minimal: the minimal image which is used to get the hardware running. It has USB Gagdet with console over USB OTG port feature. Images all require this image.
+* chip-image-minimal: the minimal image which is used to get the hardware running. Images all require this image.
 
 The wanted image is chosen during the build with bitbake command.
 
@@ -59,7 +59,7 @@ Package groups are included in wanted images.
 Using
 --
 
-The following tutorial is useful to start building your own Yocto project and loading C.H.I.P. or C.H.I.P. PRO board.
+The following tutorial is useful to start building your own Yocto project and loading C.H.I.P. or C.H.I.P. PRO board. I'm building on Ubuntu 16.04.
 
 **_1- Install System Dependencies (once)_**
 
@@ -146,7 +146,7 @@ Build minimal image:
 
 **_6- Flash target_**
 
-#### C.H.I.P.
+### C.H.I.P.
 
 Copy files in the images directory and flash the target (replace chip-image-minimal-chip.ubi by the wanted rootfs if you have build another image):
 
@@ -166,9 +166,9 @@ Flash the target:
 
 Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.
 
-At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board Speed is 115200. Login is 'root' with no password.
+At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board. Speed is 115200. Login is 'root' with no password.
 
-#### C.H.I.P. PRO
+### C.H.I.P. PRO
 
 Copy files in the images directory and flash the target (replace chip-image-minimal-chip-pro.ubi by the wanted rootfs if you have build another image):
 
@@ -186,9 +186,9 @@ Flash the target:
 	cd ~/yocto/chip-tools/
 	sudo ./chip-flash-chip-pro.sh ~/yocto/images
 
-Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.
+Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.Using the dev kit, UART1 console interface is available on the host throw an USB to Serial converter.
 
-At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board Speed is 115200. Login is 'root' with no password.
+At the end of the flashing procedure, the target is running your image. The console is available on UART1 pins of the board. Speed is 115200. Login is 'root' with no password.
 
 
 Contributing
