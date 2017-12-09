@@ -59,7 +59,7 @@ Package groups are included in wanted images.
 Using
 --
 
-The following tutorial is useful to start building your own Yocto project and loading C.H.I.P. or C.H.I.P. PRO board. I'm building on Ubuntu 16.04.
+The following tutorial is useful to start building your own Yocto project and loading C.H.I.P. or C.H.I.P. PRO board. The development machine is running Ubuntu 16.04.
 
 **_1- Install System Dependencies (once)_**
 
@@ -166,7 +166,7 @@ Flash the target:
 
 Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.
 
-At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board. Speed is 115200. Login is 'root' with no password.
+At the end of the flashing procedure, the target is running your image. Disconnect the power supply and remove the FEL jumper. Restart the target. The console is available on UART1 pins of the board and another one is also available throw the USB OTG cable (you should see a new tty device when connecting C.H.I.P. to your computer). Speed is 115200 for both consoles. Login is 'root' with no password.
 
 ### C.H.I.P. PRO
 
@@ -186,9 +186,9 @@ Flash the target:
 	cd ~/yocto/chip-tools/
 	sudo ./chip-flash-chip-pro.sh ~/yocto/images
 
-Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure.Using the dev kit, UART1 console interface is available on the host throw an USB to Serial converter.
+Logs are displayed on the serial console interface (UART1) of the target to check the progression and the verification of the flashing procedure. Using the dev kit, UART1 console interface is available on the host throw an USB to Serial converter.
 
-At the end of the flashing procedure, the target is running your image. The console is available on UART1 pins of the board. Speed is 115200. Login is 'root' with no password.
+At the end of the flashing procedure, the target is running your image. The console is available on UART1 pins of the board and another one is also available throw the USB OTG cable (you should see a new tty device when connecting C.H.I.P. PRO to your computer). Speed is 115200 for both consoles. Login is 'root' with no password.
 
 
 Contributing
