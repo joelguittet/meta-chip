@@ -81,8 +81,8 @@ Get and build sunxi tools:
 	cd ~/yocto/sunxi-tools
 	make
 	make misc
-	make install
-	make install-misc
+	sudo make install
+	sudo make install-misc
 
 Get and build C.H.I.P. tools:
 
