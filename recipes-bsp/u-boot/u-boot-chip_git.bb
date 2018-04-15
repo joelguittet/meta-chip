@@ -37,10 +37,6 @@ PE = "1"
 SUNXI_SPL_IMAGE = "sunxi-spl"
 SUNXI_SPL_BINARY = "${SUNXI_SPL_IMAGE}.bin"
 
-# sunxi-spl-with-ecc.bin
-SUNXI_SPL_PADDED_IMAGE = "sunxi-spl-with-ecc"
-SUNXI_SPL_PADDED_BINARY = "${SUNXI_SPL_PADDED_IMAGE}.bin"
-
 # u-boot-dtb.bin
 UBOOT_DTB_IMAGE = "u-boot-dtb"
 UBOOT_DTB_BINARY = "${UBOOT_DTB_IMAGE}.bin"
@@ -50,10 +46,6 @@ do_install_append() {
     # Install sunxi-spl
     install ${S}/spl/${SUNXI_SPL_BINARY} ${D}/boot/${SUNXI_SPL_IMAGE}-${PV}-${PR}
     ln -sf ${SUNXI_SPL_IMAGE}-${PV}-${PR} ${D}/boot/${SUNXI_SPL_BINARY}
-
-    # Install sunxi-spl-with-ecc
-    install ${S}/spl/${SUNXI_SPL_PADDED_BINARY} ${D}/boot/${SUNXI_SPL_PADDED_IMAGE}-${PV}-${PR}
-    ln -sf ${SUNXI_SPL_PADDED_IMAGE}-${PV}-${PR} ${D}/boot/${SUNXI_SPL_PADDED_BINARY}
 
     # Install u-boot-dtb
     install ${S}/${UBOOT_DTB_BINARY} ${D}/boot/${UBOOT_DTB_IMAGE}-${PV}-${PR}
@@ -65,10 +57,6 @@ do_deploy_append() {
     # Deploy sunxi-spl
     install ${S}/spl/${SUNXI_SPL_BINARY} ${DEPLOYDIR}/${SUNXI_SPL_IMAGE}-${PV}-${PR}
     ln -sf ${SUNXI_SPL_IMAGE}-${PV}-${PR} ${DEPLOYDIR}/${SUNXI_SPL_BINARY}
-
-    # Deploy sunxi-spl-with-ecc
-    install ${S}/spl/${SUNXI_SPL_PADDED_BINARY} ${DEPLOYDIR}/${SUNXI_SPL_PADDED_IMAGE}-${PV}-${PR}
-    ln -sf ${SUNXI_SPL_PADDED_IMAGE}-${PV}-${PR} ${DEPLOYDIR}/${SUNXI_SPL_PADDED_BINARY}
 
     # Deploy u-boot-dtb
     install ${S}/${UBOOT_DTB_BINARY} ${DEPLOYDIR}/${UBOOT_DTB_IMAGE}-${PV}-${PR}

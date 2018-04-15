@@ -152,7 +152,6 @@ Copy files in the images directory and flash the target (replace chip-image-mini
 
 	cp ~/yocto/build/tmp/deploy/images/chip/chip-image-minimal-chip.ubi ~/yocto/images/rootfs.ubi
 	cp ~/yocto/build/tmp/deploy/images/chip/sunxi-spl.bin ~/yocto/images
-	cp ~/yocto/build/tmp/deploy/images/chip/sunxi-spl-with-ecc.bin ~/yocto/images
 	cp ~/yocto/build/tmp/deploy/images/chip/u-boot-dtb.bin ~/yocto/images
 
 Then start the target in FEL mode (put a jumper between the FEL pin and GND and then power ON) as shown on the following image.
@@ -174,7 +173,6 @@ Copy files in the images directory and flash the target (replace chip-image-mini
 
 	cp ~/yocto/build/tmp/deploy/images/chip-pro/chip-image-minimal-chip-pro.ubi ~/yocto/images/rootfs.ubi
 	cp ~/yocto/build/tmp/deploy/images/chip-pro/sunxi-spl.bin ~/yocto/images
-	cp ~/yocto/build/tmp/deploy/images/chip-pro/sunxi-spl-with-ecc.bin ~/yocto/images
 	cp ~/yocto/build/tmp/deploy/images/chip-pro/u-boot-dtb.bin ~/yocto/images
 
 Then start the target in FEL mode (press FEL button while power ON) as shown on the following image.
