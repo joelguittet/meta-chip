@@ -16,32 +16,32 @@ S = "${WORKDIR}/git"
 PACKAGES = "${PN} ${PN}-dev ${PN}-dbg ${PN}-staticdev"
 
 do_compile () {
-  cd "${S}"
-  ${CC} -c gpio.c -fPIC -o gpio.o
-  ${CC} -c lradc.c -fPIC -o lradc.o
-  ${CC} -c pwm.c -fPIC -o pwm.o
-  ${CC} -c spi.c -fPIC -o spi.o
-  ${CC} -shared -Wl,-soname,libhwsunxi.so -o libhwsunxi.so gpio.o lradc.o pwm.o spi.o
-  ${AR} rcs libhwsunxi.a gpio.o lradc.o pwm.o spi.o
-  ${RANLIB} libhwsunxi.a
+    cd "${S}"
+    ${CC} -c gpio.c -fPIC -o gpio.o
+    ${CC} -c lradc.c -fPIC -o lradc.o
+    ${CC} -c pwm.c -fPIC -o pwm.o
+    ${CC} -c spi.c -fPIC -o spi.o
+    ${CC} -shared -Wl,-soname,libhwsunxi.so -o libhwsunxi.so gpio.o lradc.o pwm.o spi.o
+    ${AR} rcs libhwsunxi.a gpio.o lradc.o pwm.o spi.o
+    ${RANLIB} libhwsunxi.a
 }
 
 do_install () {
-  install -d ${D}${libdir}
-  install libhwsunxi.so ${D}${libdir}
-  install libhwsunxi.a ${D}${libdir}
-  install -d ${D}${includedir}/libhwsunxi
-  install *.h ${D}${includedir}/libhwsunxi
+    install -d ${D}${libdir}
+    install libhwsunxi.so ${D}${libdir}
+    install libhwsunxi.a ${D}${libdir}
+    install -d ${D}${includedir}/libhwsunxi
+    install *.h ${D}${includedir}/libhwsunxi
 }
 
 FILES_${PN} = " \
-  ${libdir}/*.so \
+    ${libdir}/*.so \
 "
 
 FILES_${PN}-dev += " \
-  ${includedir}/libhwsunxi/*.h \
+    ${includedir}/libhwsunxi/*.h \
 "
 
 FILES_${PN}-staticdev += " \
-  ${libdir}/*.a \
+    ${libdir}/*.a \
 "
