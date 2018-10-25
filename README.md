@@ -148,7 +148,7 @@ Build minimal image:
 
 ### C.H.I.P.
 
-Copy files in the images directory and flash the target (replace chip-image-minimal-chip.ubi by the wanted rootfs if you have build another image):
+Copy files in the images directory (replace chip-image-minimal-chip.ubi by the wanted rootfs if you have build another image):
 
 	cp ~/yocto/build/tmp/deploy/images/chip/chip-image-minimal-chip.ubi ~/yocto/images/rootfs.ubi
 	cp ~/yocto/build/tmp/deploy/images/chip/sunxi-spl.bin ~/yocto/images
@@ -169,7 +169,7 @@ At the end of the flashing procedure, the target is running your image. Disconne
 
 ### C.H.I.P. PRO
 
-Copy files in the images directory and flash the target (replace chip-image-minimal-chip-pro.ubi by the wanted rootfs if you have build another image):
+Copy files in the images directory (replace chip-image-minimal-chip-pro.ubi by the wanted rootfs if you have build another image):
 
 	cp ~/yocto/build/tmp/deploy/images/chip-pro/chip-image-minimal-chip-pro.ubi ~/yocto/images/rootfs.ubi
 	cp ~/yocto/build/tmp/deploy/images/chip-pro/sunxi-spl.bin ~/yocto/images
