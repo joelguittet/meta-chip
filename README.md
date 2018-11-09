@@ -200,9 +200,6 @@ Use Github Issues to report anomalies or to propose enhancements (labels are ava
 References
 --
 
-* https://github.com/agherzan/meta-chip
-* https://github.com/soderstrom-rikard/meta-sunxi/tree/sun5i-r8-chip
-* https://bbs.nextthing.co/t/yocto-project-an-initial-teaser-release/833
-* https://bbs.nextthing.co/t/flash-chip-using-ubuntu-on-usb/2401
+* http://linux-sunxi.org
 
-Special thanks to Rikard Soderstrom who integrated C.H.I.P. in the meta-sunxi layer.
+Special thanks to Rikard Soderstrom who integrated C.H.I.P. in the meta-sunxi layer in the past.
