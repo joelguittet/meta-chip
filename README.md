@@ -84,7 +84,7 @@ Get and build sunxi tools:
 	sudo make install
 	sudo make install-misc
 
-Get and build C.H.I.P. tools:
+Get C.H.I.P. tools:
 
 	git clone https://github.com/myfreescalewebpage/chip-tools ~/yocto/chip-tools
 
@@ -156,7 +156,7 @@ Copy files in the images directory (replace chip-image-minimal-chip.ubi by the w
 
 Then start the target in FEL mode (put a jumper between the FEL pin and GND and then power ON) as shown on the following image.
 
-![FEL](http://flash.getchip.com/static/img/chipConnect.2c4d9dc.png)
+![FEL](https://github.com/myfreescalewebpage/chip-tools/blob/master/chip-fel-mode-chip.jpg)
 
 Flash the target:
 
@@ -177,7 +177,7 @@ Copy files in the images directory (replace chip-image-minimal-chip-pro.ubi by t
 
 Then start the target in FEL mode (press FEL button while power ON) as shown on the following image.
 
-![FEL](http://flash.getchip.com/static/img/pressPlugWhite.682b824.gif)
+![FEL](https://github.com/myfreescalewebpage/chip-tools/blob/master/chip-fel-mode-chip-pro.jpg)
 
 Flash the target:
 
