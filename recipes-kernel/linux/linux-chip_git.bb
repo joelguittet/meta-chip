@@ -11,7 +11,7 @@ require recipes-kernel/linux/linux-yocto.inc
 SRCREV ?= "bce5de1cdc3667a2bc454219a0856b4f415b33f5"
 
 SRC_URI += " \
-    git://github.com/NextThingCo/CHIP-linux.git;protocol=git;branch=nextthing/4.4/chip \
+    git://github.com/myfreescalewebpage/chip-linux.git;protocol=git;branch=nextthing/4.4/chip \
     file://defconfig \
 "
 
