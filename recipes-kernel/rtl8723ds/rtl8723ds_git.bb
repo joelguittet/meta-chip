@@ -9,7 +9,7 @@ inherit module
 SRCREV = "0d60107a4c0bdedf8cf7858f717226028501e6b5"
 
 SRC_URI = " \
-    git://github.com/nextthingco/rtl8723ds.git;protocol=git;branch=master \
+    git://github.com/myfreescalewebpage/rtl8723ds.git;protocol=git;branch=master \
     file://Makefile.patch \
 "
 
