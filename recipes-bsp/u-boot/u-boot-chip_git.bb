@@ -25,7 +25,7 @@ DEFAULT_PREFERENCE_chip="1"
 SRCREV = "c2d284fbba74083eed8ae853a10f665f6febfdf1"
 
 SRC_URI = " \
-    git://github.com/NextThingCo/CHIP-u-boot.git;protocol=git;branch=nextthing/2016.01/next \
+    git://github.com/myfreescalewebpage/chip-u-boot.git;protocol=git;branch=nextthing/2016.01/next \
 "
 
 UBOOT_VERSION ?= "2016.01"
