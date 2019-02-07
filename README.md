@@ -64,7 +64,7 @@ The following tutorial is useful to start building your own Yocto project and lo
 **_1- Install System Dependencies (once)_**
 
 	sudo apt-get update && sudo apt-get upgrade
-	sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm lzop u-boot-tools git build-essential curl libusb-1.0-0-dev python-pip minicom libncurses5-dev
+	sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm lzop u-boot-tools git build-essential curl libusb-1.0-0-dev python-pip minicom android-tools-fsutils android-tools-fastboot libncurses5-dev
 	sudo pip install --upgrade pip && sudo pip install pyserial
 
 **_2- Get sources and flashing tools (once)_**
