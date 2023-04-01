@@ -8,7 +8,7 @@ PR = "r0"
 SRCREV = "0e17ad3c7724a92806c2ec231d4412b73c34e2c8"
 
 SRC_URI = " \
-    git://github.com/myfreescalewebpage/libhwsunxi.git;protocol=git;branch=master \
+    git://github.com/joelguittet/libhwsunxi.git;protocol=git;branch=master \
 "
 
 S = "${WORKDIR}/git"

@@ -16,7 +16,7 @@ Optionally, the following layers will be required:
 
 * meta-java (from http://git.yoctoproject.org/cgit/cgit.cgi/meta-java - only if building openjdk)
 
-Examples to use this layer are available in my Github at https://github.com/myfreescalewebpage/meta-chip-examples.
+Examples to use this layer are available in my Github at https://github.com/joelguittet/meta-chip-examples.
 
 
 Philosophy of this meta layer
@@ -73,7 +73,7 @@ Clone sources:
 
 	git clone --branch fido git://git.yoctoproject.org/poky.git ~/yocto/poky
 	git clone --branch fido git://git.openembedded.org/meta-openembedded ~/yocto/meta-openembedded
-	git clone https://github.com/myfreescalewebpage/meta-chip.git ~/yocto/meta-chip
+	git clone https://github.com/joelguittet/meta-chip.git ~/yocto/meta-chip
 
 Get and build sunxi tools:
 
@@ -86,7 +86,7 @@ Get and build sunxi tools:
 
 Get C.H.I.P. tools:
 
-	git clone https://github.com/myfreescalewebpage/chip-tools ~/yocto/chip-tools
+	git clone https://github.com/joelguittet/chip-tools ~/yocto/chip-tools
 
 Update udev rules:
 
@@ -156,7 +156,7 @@ Copy files in the images directory (replace chip-image-minimal-chip.ubi by the w
 
 Then start the target in FEL mode (put a jumper between the FEL pin and GND and then power ON) as shown on the following image.
 
-![FEL](https://github.com/myfreescalewebpage/chip-tools/blob/master/chip-fel-mode-chip.jpg)
+![FEL](https://github.com/joelguittet/chip-tools/blob/master/chip-fel-mode-chip.jpg)
 
 Flash the target:
 
@@ -177,7 +177,7 @@ Copy files in the images directory (replace chip-image-minimal-chip-pro.ubi by t
 
 Then start the target in FEL mode (press FEL button while power ON) as shown on the following image.
 
-![FEL](https://github.com/myfreescalewebpage/chip-tools/blob/master/chip-fel-mode-chip-pro.jpg)
+![FEL](https://github.com/joelguittet/chip-tools/blob/master/chip-fel-mode-chip-pro.jpg)
 
 Flash the target:
 
